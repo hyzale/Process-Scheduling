@@ -5,11 +5,17 @@ template <class item_t>
 class ArrayList
 {
   private:
+
+
+   //Resizes the ArrayList to the target capacity.
+   void resize(int cap);
+   void resizeIfFull();
+
+  public:
+
    item_t* items;
    int size;
    int capacity;
-   
-  public:
    //Creates an empty list with capacity 10
    ArrayList();
    //Creates a list with the given capacity
@@ -53,5 +59,6 @@ class ArrayList
 };
 
 #include "ArrayList.tpp"
+
 
 #endif
