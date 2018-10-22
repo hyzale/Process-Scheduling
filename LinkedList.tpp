@@ -35,6 +35,13 @@ void LinkedList<item_t>::popBack() {
     if (isEmpty()) {
         return;
     }
+    if (size == 1) {
+        delete head;
+        head = 0;
+        tail = 0;
+        size = 0;
+        return;
+    }
     LinkedListNode<item_t>* traveler = head;
     while (traveler->getNext() != tail) {
         traveler = traveler->getNext();
@@ -43,6 +50,36 @@ void LinkedList<item_t>::popBack() {
     tail = traveler;
     size--;
 
+}
+
+template <class item_t>
+const item_t& LinkedList<item_t>::getBack() const {
+    return tail->getItem();
+}
+
+template <class item_t>
+void LinkedList<item_t>::pushFront(const item_t& item) {
+    LinkedListNode<item_t>* newNode = new LinkedListNode<item_t>(head, item);
+    head = newNode;
+    size++;
+}
+
+template <class item_t>
+void LinkedList<item_t>::popFront() {
+    if (isEmpty()) {
+        return;
+    }
+    if (size == 1) {
+        delete head;
+        head = 0;
+        tail = 0;
+        size = 0;
+        return;
+    }
+    LinkedListNode<item_t>* traveler = head->getNext();
+    delete head;
+    head = traveler;
+    size--;
 }
 
 template <class item_t>
@@ -62,6 +99,14 @@ const item_t& LinkedList<item_t>::getItem(int index) const {
 
 template <class item_t>
 void LinkedList<item_t>::setItem(int index, const item_t& item) {
+    if (index > size) {
+        return;
+    }
+    if (index == size){
+        pushBack(item);
+        return;
+    }
+
     LinkedListNode<item_t>* traveler = head;
     while (index > 0) {
         traveler = traveler->getNext();
@@ -72,6 +117,17 @@ void LinkedList<item_t>::setItem(int index, const item_t& item) {
 
 template <class item_t>
 void LinkedList<item_t>::insert(int index, const item_t& item) {
+    if (index > size) {
+        return;
+    }
+    if (index == size){
+        pushBack(item);
+        return;
+    }
+    if (index == 0){
+        pushFront(item);
+        return;
+    }
     LinkedListNode<item_t>* before = head;
     while (index > 1) {
         before = before->getNext();
@@ -99,11 +155,14 @@ void LinkedList<item_t>::remove(int index) {
 }
 
 template <class item_t>
-LinkedList<item_t>::getSize() const {
+int LinkedList<item_t>::getSize() const {
     return size;
 }
 
 template <class item_t>
-LinkedList<item_t>::isEmpty() const {
-    head == 0 ? true : false;
+bool LinkedList<item_t>::isEmpty() const {
+    return size == 0 ? true : false;
 }
+
+
+

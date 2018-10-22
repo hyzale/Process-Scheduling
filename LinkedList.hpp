@@ -8,13 +8,13 @@ template <class item_t>
 class LinkedList : public List<item_t>
 {
   protected:
-   LinkedListNode* head;
-   LinkedListNode* tail;
+   LinkedListNode<item_t>* head;
+   LinkedListNode<item_t>* tail;
    int size;
 
   public:
 
-   virtual LinkedList();
+   LinkedList();
    virtual ~LinkedList();
    
    //Pushes item to the back of the list
@@ -52,10 +52,7 @@ class LinkedList : public List<item_t>
 
 };
 
-
-
-
-
+#include "LinkedList.tpp"
 
 
 #endif
