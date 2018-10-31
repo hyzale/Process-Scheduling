@@ -1,4 +1,3 @@
-#include <algorithm>
 
 template <class item_t>
 ArrayList<item_t>::ArrayList() {
@@ -16,7 +15,7 @@ ArrayList<item_t>::ArrayList(int capacity) {
 
 template <class item_t>
 ArrayList<item_t>::~ArrayList() {
-    delete items;
+    delete[] items;
 }
 
 template <class item_t>
@@ -124,3 +123,5 @@ template <class item_t>
 int ArrayList<item_t>::getCapacity() const {
     return capacity;
 }
+
+

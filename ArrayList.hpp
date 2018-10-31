@@ -3,6 +3,8 @@
 
 #include "List.hpp"
 
+#include <algorithm>
+
 template <class item_t>
 class ArrayList : public List<item_t>
 {
