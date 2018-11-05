@@ -60,6 +60,7 @@ TEST_CASE ("Testing ArrayList") {
         REQUIRE (a->getItem(0) == 1);
         delete a;
     }
+    
     SECTION ("Testing insert and remove") {
         ArrayList<int>* a = new ArrayList<int>();
         a->insert(0, 1);
@@ -73,6 +74,8 @@ TEST_CASE ("Testing ArrayList") {
         REQUIRE (a->getItem(1) == 1);
         a->remove(3);
         REQUIRE (a->getItem(3) == 4);
+        a->insert(3, 233);
+        REQUIRE (a->getItem(4) == 4);
         delete a;
     }
 

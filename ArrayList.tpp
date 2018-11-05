@@ -22,7 +22,7 @@ template <class item_t>
 void ArrayList<item_t>::resize(int cap) {
     item_t* destination = new item_t[cap];
     std::copy_n(items, size, destination);
-    delete items;
+    delete[] items;
     items = destination;
     capacity = cap;
 }
@@ -102,6 +102,9 @@ void ArrayList<item_t>::insert(int index, const item_t& item) {
 
 template <class item_t>
 void ArrayList<item_t>::remove(int index) {
+    if (index >= size) {
+        return;
+    }
     for (int i = index; i < size; i++) {
         items[i] = items[i + 1];
     }

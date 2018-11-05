@@ -18,6 +18,8 @@ class RBTMultimap : public BSTMultimap<key_t, val_t>
   protected:
    //Performs the rotate left operation
    //(assumes node has a right child)
+   void insertNode(BSTNode<key_t, val_t>* newNode);
+
    virtual void rotateLeft(BSTNode<key_t, val_t>* node);
 
    //Performs the rotate right operation
