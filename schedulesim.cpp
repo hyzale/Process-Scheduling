@@ -18,7 +18,7 @@ int main(int argc, char const *argv[])
     int nIOBoundProcess = stoi(argv[2]);
     int nCycles = stoi(argv[3]);
 
-    Scheduler sche = new RoundRobin();
+    Scheduler* sche = new RoundRobin();
 
     double* res = simulate(sche, nCPUBoundProcess, nIOBoundProcess, nCycles);
 
@@ -28,7 +28,7 @@ int main(int argc, char const *argv[])
     cout << endl;
 
     delete sche;
-    
+
     return 0;
 }
 
