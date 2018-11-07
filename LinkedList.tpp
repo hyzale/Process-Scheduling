@@ -161,7 +161,7 @@ int LinkedList<item_t>::getSize() const {
 
 template <class item_t>
 bool LinkedList<item_t>::isEmpty() const {
-    return size == 0 ? true : false;
+    return size == 0;
 }
 
 
