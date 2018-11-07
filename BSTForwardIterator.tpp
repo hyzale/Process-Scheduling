@@ -8,22 +8,21 @@ BSTForwardIterator<key_t, val_t>::BSTForwardIterator(BSTNode<key_t, val_t>* node
 
 template <class key_t, class val_t>
 void BSTForwardIterator<key_t, val_t>::next() {
-    if (current == sentinel) {
-        return;
-    }
-    if (current->getRightChild() != sentinel)  {
-        current = current->getRightChild();
-        while (current->getLeftChild() != sentinel) {
-            current = current->getLeftChild();
+    if (current != sentinel) {
+        if (current->getRightChild() != sentinel) {
+            current = current->getRightChild();
+            while (current->getLeftChild() != sentinel) {
+                current = current->getLeftChild();
+            }
+        } else {
+            BSTNode<key_t,val_t>* parent = current->getParent();
+            while ((parent != sentinel) && (current == parent->getRightChild())) {
+                current = parent;
+                parent = parent->getParent();
+            }
+            current = parent;
         }
-        return;
     }
-    BSTNode<key_t, val_t>* traveler = current->getParent();
-    while (traveler != sentinel && current == traveler->getRightChild()) {
-        current = traveler;
-        traveler = traveler->getParent();
-    }
-    current = traveler;
 }
 
 template <class key_t, class val_t>

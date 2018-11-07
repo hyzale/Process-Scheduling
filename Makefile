@@ -25,7 +25,7 @@ LinkedList_TEST: LinkedList_TEST.cpp LinkedListNode.hpp LinkedList.hpp catch.hpp
 
 testgcov_LinkedList_TEST: 
 	g++ -std=c++11 --coverage -o LinkedList_TEST LinkedList_TEST.cpp
-	./ArrayList_TEST
+	./LinkedList_TEST
 	gcov LinkedList_TEST.cpp
 
 testlcov_LinkedList_TEST: testgcov_LinkedList_TEST
@@ -37,6 +37,32 @@ testlcov_LinkedList_TEST: testgcov_LinkedList_TEST
 BSTNode_TEST: BSTNode_TEST.cpp BSTNode.hpp BSTNode.tpp catch.hpp
 	g++ -std=c++11 -o BSTNode_TEST BSTNode_TEST.cpp
 	./BSTNode_TEST
+
+testgcov_BSTNode_TEST: 
+	g++ -std=c++11 --coverage -o BSTNode_TEST BSTNode_TEST.cpp
+	./BSTNode_TEST
+	gcov BSTNode_TEST.cpp
+
+testlcov_BSTNode_TEST: testgcov_BSTNode_TEST
+	lcov --directory ./ --zerocounters
+	./BSTNode_TEST
+	lcov --directory ./ --capture --output-file BSTNode_TEST.info
+	genhtml --output-directory coverage BSTNode_TEST.info
+
+BSTMultimap_TEST: BSTMultimap_TEST.cpp BSTMultimap.hpp BSTMultimap.tpp BSTNode.hpp BSTNode.tpp catch.hpp BSTForwardIterator.tpp  BSTForwardIterator.hpp
+	g++ -std=c++11 -o BSTMultimap_TEST BSTMultimap_TEST.cpp
+	./BSTMultimap_TEST
+
+testgcov_BSTMultimap_TEST: 
+	g++ -std=c++11 --coverage -o BSTMultimap_TEST BSTMultimap_TEST.cpp
+	./BSTMultimap_TEST
+	gcov BSTMultimap_TEST.cpp
+
+testlcov_BSTMultimap_TEST: testgcov_BSTMultimap_TEST
+	lcov --directory ./ --zerocounters
+	./BSTMultimap_TEST
+	lcov --directory ./ --capture --output-file BSTMultimap_TEST.info
+	genhtml --output-directory coverage BSTMultimap_TEST.info
 
 tests: ArrayList_TEST
 	./ArrayList_TEST
@@ -61,4 +87,4 @@ run_simulator: Scheduler.hpp Process.hpp simulate.hpp Scheduler.cpp Process.cpp 
 
 
 clean:
-	rm -R *.o *.gcda *.info *.gcno *.gcov *.dSYM coverage ArrayList_TEST a.out LinkedList_TEST simu BSTNode_TEST
+	rm -R *.o *.gcda *.info *.gcno *.gcov *.dSYM coverage ArrayList_TEST a.out LinkedList_TEST simu BSTNode_TEST BSTMultimap_TEST
