@@ -1,5 +1,7 @@
 #include "Process.hpp"
 #include "List.hpp"
+#include "ArrayList.hpp"
+
 
 #ifndef SCHEDULER
 #define SCHEDULER

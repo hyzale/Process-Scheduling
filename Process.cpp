@@ -1,8 +1,4 @@
 #include "Process.hpp"
-#include <cstdlib>
-#include <iostream>
-
-using namespace std;
 
 //Constructor with process id and set cpuTime and waitTime to 0
 Process::Process(int id) : id(id)

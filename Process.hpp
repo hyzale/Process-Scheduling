@@ -1,6 +1,11 @@
 #ifndef PROCESS
 #define PROCESS
 
+#include <cstdlib>
+#include <iostream>
+using namespace std;
+
+
 //An abstract class representing a process
 class Process
 {

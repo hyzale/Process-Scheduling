@@ -1,9 +1,4 @@
-#include "Scheduler.hpp"
-#include "Process.hpp"
-#include "ArrayList.hpp"
-#include <iostream>
-#include <chrono>
-#include <string>
+#include "simulate.hpp"
 
 using namespace std;
 
@@ -53,6 +48,7 @@ double* simulate(Scheduler* sched, int numCPUBound, int numIOBound, int numCycle
         procs->popFront();
         delete p;
     }
+
     delete procs;
 
     double* res = new double[5];
