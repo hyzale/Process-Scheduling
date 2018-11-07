@@ -26,3 +26,10 @@ Process* RoundRobin::popNext(int curCycle) {
     }
     return result;
 }
+
+FastRoundRobin::FastRoundRobin() {
+    delete procQueue;
+    procQueue = new LinkedList<Process *>();
+}
+
+

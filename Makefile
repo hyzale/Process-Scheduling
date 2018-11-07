@@ -34,6 +34,10 @@ testlcov_LinkedList_TEST: testgcov_LinkedList_TEST
 	lcov --directory ./ --capture --output-file LinkedList_TEST.info
 	genhtml --output-directory coverage LinkedList_TEST.info
 
+BSTNode_TEST: BSTNode_TEST.cpp BSTNode.hpp BSTNode.tpp catch.hpp
+	g++ -std=c++11 -o BSTNode_TEST BSTNode_TEST.cpp
+	./BSTNode_TEST
+
 tests: ArrayList_TEST
 	./ArrayList_TEST
 
@@ -49,7 +53,6 @@ run_simulator_jieguo: Scheduler.hpp Process.hpp simulate.hpp Scheduler.cpp Proce
 	./simu 8000 10 1000000
 	./simu 9000 10 1000000
 	./simu 10000 10 1000000
-	rm simu
 
 run_simulator: Scheduler.hpp Process.hpp simulate.hpp Scheduler.cpp Process.cpp simulate.cpp 
 	g++ schedulesim.cpp Scheduler.cpp Process.cpp simulate.cpp --std=c++11 -o simu
@@ -58,4 +61,4 @@ run_simulator: Scheduler.hpp Process.hpp simulate.hpp Scheduler.cpp Process.cpp 
 
 
 clean:
-	rm -R *.o *.gcda *.info *.gcno *.gcov *.dSYM coverage ArrayList_TEST a.out LinkedList_TEST
+	rm -R *.o *.gcda *.info *.gcno *.gcov *.dSYM coverage ArrayList_TEST a.out LinkedList_TEST simu BSTNode_TEST

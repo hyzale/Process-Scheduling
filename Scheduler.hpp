@@ -1,6 +1,7 @@
 #include "Process.hpp"
 #include "List.hpp"
 #include "ArrayList.hpp"
+#include "LinkedList.hpp"
 
 
 #ifndef SCHEDULER
@@ -40,6 +41,7 @@ class FastRoundRobin : public RoundRobin
 {
   public:
     FastRoundRobin();
+
 };
 
 
