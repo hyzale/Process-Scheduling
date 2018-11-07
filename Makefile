@@ -37,8 +37,8 @@ testlcov_LinkedList_TEST: testgcov_LinkedList_TEST
 tests: ArrayList_TEST
 	./ArrayList_TEST
 
-run_simulator_jieguo:
-	g++ Scheduler.cpp Process.cpp schedulesim.cpp --std=c++11 -o simu
+run_simulator_jieguo: Scheduler.hpp Process.hpp simulate.hpp Scheduler.cpp Process.cpp simulate.cpp 
+	g++ schedulesim.cpp Scheduler.cpp Process.cpp simulate.cpp --std=c++11 -o simu	
 	./simu 1000 10 1000000
 	./simu 2000 10 1000000
 	./simu 3000 10 1000000
@@ -50,6 +50,11 @@ run_simulator_jieguo:
 	./simu 9000 10 1000000
 	./simu 10000 10 1000000
 	rm simu
+
+run_simulator: Scheduler.hpp Process.hpp simulate.hpp Scheduler.cpp Process.cpp simulate.cpp 
+	g++ schedulesim.cpp Scheduler.cpp Process.cpp simulate.cpp --std=c++11 -o simu
+	./simu 1000 10 1000000
+
 
 
 clean:
