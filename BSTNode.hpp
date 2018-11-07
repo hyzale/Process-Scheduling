@@ -35,7 +35,7 @@ class BSTNode
    BSTNode<key_t, val_t>* getParent() const;
    void setParent(BSTNode<key_t, val_t>* newParent);
 
-   string toString();
+   string inOrder();
 };
 
 #include "BSTNode.tpp"

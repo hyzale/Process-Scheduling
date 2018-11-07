@@ -10,7 +10,7 @@ LinkedList<item_t>::LinkedList() {
 template <class item_t>
 LinkedList<item_t>::~LinkedList() {
     LinkedListNode<item_t>* traveler = head;
-    while (traveler != 0) {
+    while (traveler) {
         LinkedListNode<item_t>* next = traveler->getNext();
         delete traveler;
         traveler = next;

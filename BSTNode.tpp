@@ -60,14 +60,15 @@ void BSTNode<key_t, val_t>::setParent(BSTNode<key_t, val_t>* newParent) {
 }
 
 template <class key_t, class val_t>
-string BSTNode<key_t, val_t>::toString() {
+string BSTNode<key_t, val_t>::inOrder() {
     string res;
-    if (left != 0) {
-        res += left->toString() + ' ';
+    if (left) {
+        res += left->inOrder() + ' ';
     }
     res += to_string(key) + ' ';
-    if (right != 0) {
-        res += right->toString() + ' ';
-    }    
+    if (right) {
+        res += right->inOrder() + ' ';
+    }
+    return res;
 }
 
