@@ -50,6 +50,8 @@ TEST_CASE ("Testing ArrayList") {
 
     SECTION ("Testing getItem and setItem") {
         ArrayList<int>* a = new ArrayList<int>();
+        a->setItem(8, 788);
+        a->setItem(0, 788);
         a->setItem(0, 788);
         a->setItem(1, 2);
         a->setItem(2, 3);
@@ -63,6 +65,7 @@ TEST_CASE ("Testing ArrayList") {
     
     SECTION ("Testing insert and remove") {
         ArrayList<int>* a = new ArrayList<int>();
+        a->insert(5, 1);
         a->insert(0, 1);
         a->insert(1, 2);
         a->insert(2, 3);
@@ -73,9 +76,12 @@ TEST_CASE ("Testing ArrayList") {
         REQUIRE (a->getItem(0) == 788);
         REQUIRE (a->getItem(1) == 1);
         a->remove(3);
+        a->remove(9);
         REQUIRE (a->getItem(3) == 4);
         a->insert(3, 233);
         REQUIRE (a->getItem(4) == 4);
+
+
         delete a;
     }
 

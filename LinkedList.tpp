@@ -99,7 +99,7 @@ const item_t& LinkedList<item_t>::getItem(int index) const {
 
 template <class item_t>
 void LinkedList<item_t>::setItem(int index, const item_t& item) {
-    if (index > size) {
+    if (index < 0 || index > size) {
         return;
     }
     if (index == size){
@@ -117,7 +117,7 @@ void LinkedList<item_t>::setItem(int index, const item_t& item) {
 
 template <class item_t>
 void LinkedList<item_t>::insert(int index, const item_t& item) {
-    if (index > size) {
+    if (index < 0 || index > size) {
         return;
     }
     if (index == size){

@@ -10,12 +10,21 @@ TEST_CASE ("Testing LinkedList") {
 
     SECTION ("Testing pushBack, popBack, and getBack") {
         LinkedList<int>* a = new LinkedList<int>();
+        a->popBack();
         REQUIRE (a->isEmpty() == true);
         a->pushBack(5);
         a->pushBack(4);
         REQUIRE (a->getSize() == 2);
         REQUIRE (a->isEmpty() == false);
         REQUIRE (a->getBack() == 4);
+        a->pushBack(4);
+        a->pushBack(4);
+        a->pushBack(4);
+        a->pushBack(4);
+        a->popBack();
+        a->popBack();
+        a->popBack();
+        a->popBack();
         a->popBack();
         a->popBack();
         REQUIRE (a->getSize() == 0);
@@ -25,6 +34,7 @@ TEST_CASE ("Testing LinkedList") {
     
     SECTION ("Testing pushFront, popFront and getFront") {
         LinkedList<int>* a = new LinkedList<int>();
+        a->popFront();
         a->pushFront(5);
         a->pushFront(4);
         a->pushFront(3);
@@ -50,11 +60,15 @@ TEST_CASE ("Testing LinkedList") {
         LinkedList<int>* a = new LinkedList<int>();
         a->setItem(0, 788);
         a->setItem(1, 2);
-        a->setItem(2, 3);
+        a->setItem(2, 3);        
+        a->setItem(3, 4);
         REQUIRE (a->getItem(0) == 788);
         REQUIRE (a->getItem(1) == 2);
         REQUIRE (a->getItem(2) == 3);
+        a->setItem(2, 888);        
         a->setItem(0, 1);
+        a->setItem(78888, 1);
+        REQUIRE (a->getItem(2) == 888);
         REQUIRE (a->getItem(0) == 1);
         delete a;
     }
@@ -71,6 +85,9 @@ TEST_CASE ("Testing LinkedList") {
         REQUIRE (a->getItem(1) == 1);
         a->remove(3);
         REQUIRE (a->getItem(3) == 4);
+        a->insert(3, 233);
+        REQUIRE (a->getItem(3) == 233);
+        a->insert(788, 233);
         delete a;
     }
 
