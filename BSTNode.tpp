@@ -59,7 +59,15 @@ void BSTNode<key_t, val_t>::setParent(BSTNode<key_t, val_t>* newParent) {
     parent = newParent;
 }
 
-
-
-
+template <class key_t, class val_t>
+string BSTNode<key_t, val_t>::toString() {
+    string res;
+    if (left != 0) {
+        res += left->toString() + ' ';
+    }
+    res += to_string(key) + ' ';
+    if (right != 0) {
+        res += right->toString() + ' ';
+    }    
+}
 

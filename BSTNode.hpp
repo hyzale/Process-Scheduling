@@ -1,6 +1,11 @@
 #ifndef BSTNODE
 #define BSTNODE
 
+#include <string>
+
+using namespace std;
+
+
 
 template <class key_t, class val_t>
 class BSTNode 
@@ -30,6 +35,7 @@ class BSTNode
    BSTNode<key_t, val_t>* getParent() const;
    void setParent(BSTNode<key_t, val_t>* newParent);
 
+   string toString();
 };
 
 #include "BSTNode.tpp"
