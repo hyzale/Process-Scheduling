@@ -18,13 +18,17 @@ int main(int argc, char const *argv[])
     int nIOBoundProcess = stoi(argv[2]);
     int nCycles = stoi(argv[3]);
 
-    double* res = simulate(new RoundRobin(), nCPUBoundProcess, nIOBoundProcess, nCycles);
+    Scheduler sche = new RoundRobin();
+
+    double* res = simulate(sche, nCPUBoundProcess, nIOBoundProcess, nCycles);
 
     for(int i = 0; i <= 4; i++)
         cout << res[i] << ' ';
 
     cout << endl;
 
+    delete sche;
+    
     return 0;
 }
 
