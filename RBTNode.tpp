@@ -10,6 +10,11 @@ RBTNode<key_t, val_t>::RBTNode(key_t k, val_t v) {
     red = false;
 }
 
+template <class key_t, class val_t>
+RBTNode<key_t, val_t>::RBTNode(const key_t& key, const val_t& value, bool color) : BSTNode<key_t, val_t>(key, value)
+{
+   red = color;
+}
 
 template <class key_t, class val_t>
 RBTNode<key_t, val_t>* RBTNode<key_t, val_t>::getParent() const
