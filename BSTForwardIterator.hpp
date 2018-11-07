@@ -2,6 +2,7 @@
 #define BST_FORWARD_ITERATOR
 
 #include "BSTNode.hpp"
+#include <iostream>
 
 template <class key_t, class val_t>
 class BSTForwardIterator
@@ -13,6 +14,8 @@ class BSTForwardIterator
    BSTNode<key_t, val_t>* sentinel;
    
   public:
+
+
    BSTForwardIterator(BSTNode<key_t, val_t>* node, BSTNode<key_t, val_t>* sentinel);
 
    //Points the iterator at the successor of its
