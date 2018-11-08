@@ -108,8 +108,8 @@ TEST_CASE ("Testing BSTNode") {
 
     SECTION ("Testing remove") {
         RBTMultimap<int, int>* a = new RBTMultimap<int, int>();
-        BSTForwardIterator<int, int> b;
-        BSTForwardIterator<int, int> c;
+        BSTForwardIterator<int, int> b = a->getMin();
+        BSTForwardIterator<int, int> c = a->getMax();
         a->insert(5, 5);
         b = a->getMin();
         REQUIRE(b.getValue() == 5);
@@ -131,6 +131,7 @@ TEST_CASE ("Testing BSTNode") {
         a->insert(37, 37);
         a->printDOT("before.dot");
         b = a->getMin();
+        REQUIRE(b.getKey() == 1);
         REQUIRE(b.getKey() == 1);
         c = a->getMax();
         b = a->getMin();

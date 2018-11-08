@@ -10,6 +10,7 @@ RBTMultimap<key_t,val_t>::RBTMultimap() : BSTMultimap<key_t, val_t>() {
 template <class key_t, class val_t>
 RBTMultimap<key_t,val_t>::~RBTMultimap() {
     this->clear();
+	delete this->sentinel;
 }
 
 
