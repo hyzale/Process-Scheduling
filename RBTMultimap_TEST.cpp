@@ -113,7 +113,6 @@ TEST_CASE ("Testing BSTNode") {
         a->insert(5, 5);
         b = a->getMin();
         REQUIRE(b.getValue() == 5);
-        a->remove(b);
         a->insert(5, 5);
         a->insert(8, 8);
         a->insert(9, 9);
