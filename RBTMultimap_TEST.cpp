@@ -140,15 +140,6 @@ TEST_CASE ("Testing BSTNode") {
         a->remove(b);
         b = a->getMin();
         REQUIRE(b.getKey() == 3);
-        a->remove(b);
-        b.next();
-        a->remove(b);
-        b.next();
-        a->remove(b);
-        b.next();
-        a->remove(b);
-        b.next();
-        a->remove(b);
         a->printDOT("after.dot");
 
         delete a;
