@@ -19,11 +19,16 @@ int main(int argc, char const *argv[])
     int nIOBoundProcess = stoi(argv[2]);
     int nCycles = stoi(argv[3]);
 
+    RoundRobin* RR = new RoundRobin();
+    FastRoundRobin* FRR = new FastRoundRobin();
+    CompletelyFair* CF = new CompletelyFair();
+    FastCompletelyFair* FCF = new FastCompletelyFair();
+
     Scheduler** sche = new Scheduler*[4];
-    sche[0] = new RoundRobin();
-    sche[1] = new FastRoundRobin();
-    sche[2] = new CompletelyFair();
-    sche[3] = new FastCompletelyFair();
+    sche[0] = RR;
+    sche[1] = FRR;
+    sche[2] = CF;
+    sche[3] = FCF;
 
     string label[4];
     label[0] = "RoundRobin";
@@ -41,6 +46,7 @@ int main(int argc, char const *argv[])
     }
 
     delete[] sche;
+    delete RR; delete FRR; delete CF; delete FCF;
     return 0;
 }
 
