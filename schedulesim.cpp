@@ -19,24 +19,28 @@ int main(int argc, char const *argv[])
     int nIOBoundProcess = stoi(argv[2]);
     int nCycles = stoi(argv[3]);
 
-    Scheduler** sche = new Scheduler*[2];
+    Scheduler** sche = new Scheduler*[4];
     sche[0] = new RoundRobin();
     sche[1] = new FastRoundRobin();
-    string label[2];
+    sche[2] = new CompletelyFair();
+    sche[3] = new FastCompletelyFair();
+
+    string label[4];
     label[0] = "RoundRobin";
     label[1] = "FastRoundRobin";
+    label[2] = "CompletelyFair";
+    label[3] = "FastCompletelyFair";
 
-    for (int i = 0; i <= 1; i++) {
+    for (int i = 0; i <= 3; i++) {
         double* res = simulate(sche[i], nCPUBoundProcess, nIOBoundProcess, nCycles);
 
-        for(int i = 0; i <= 4; i++)
+        for(int i = 0; i <= 3; i++)
             cout << res[i] << ' ';
 
         cout << label[i] << endl;  
     }
 
     delete[] sche;
-
     return 0;
 }
 

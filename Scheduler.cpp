@@ -32,4 +32,29 @@ FastRoundRobin::FastRoundRobin() {
     procQueue = new LinkedList<Process *>();
 }
 
+CompletelyFair::CompletelyFair() {
+    procTree = new BSTMultimap<int, Process*>();
+}
 
+CompletelyFair::~CompletelyFair() {
+    delete procTree;
+}
+
+void CompletelyFair::addProcess(Process* proc) {
+    procTree->insert(proc->getCPUTime(), proc);
+}
+
+Process* CompletelyFair::popNext(int curCycle) {
+    BSTForwardIterator<int, Process*> processIter = procTree->getMin();
+    while(processIter.getValue()->isBlocked(curCycle)) {
+        processIter.next();
+    }
+    Process* result = processIter.getValue();
+    procTree->remove(processIter);
+    return result;
+}
+
+FastCompletelyFair::FastCompletelyFair() {
+    delete procTree;
+    procTree = new RBTMultimap<int, Process*>();  
+}

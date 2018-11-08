@@ -12,7 +12,7 @@ class BSTForwardIterator
    BSTNode<key_t, val_t>* current;
    //The value representing the non-node
    BSTNode<key_t, val_t>* sentinel;
-   
+
   public:
 
 
@@ -39,6 +39,8 @@ class BSTForwardIterator
    //Declares BSTMultimap as a friend class
    //(so it can access the protected member current)
    template <class k_t, class v_t> friend class BSTMultimap;
+   template <class k_t, class v_t> friend class RBTMultimap;
+
 };
 
 #include "BSTForwardIterator.tpp"

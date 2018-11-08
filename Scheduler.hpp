@@ -1,18 +1,21 @@
+
+#ifndef SCHEDULER
+#define SCHEDULER
+
 #include "Process.hpp"
 #include "List.hpp"
 #include "ArrayList.hpp"
 #include "LinkedList.hpp"
-
-
-#ifndef SCHEDULER
-#define SCHEDULER
+#include "BSTMultimap.hpp"
+#include "RBTMultimap.hpp"
 
 class Scheduler 
 {
   public:
 
    //adds the given process to the processes to be scheduled
-   virtual void addProcess(Process* proc) {};
+   virtual void addProcess(Process* proc) {
+    };
 
    //removes and returns the next process in the schedule.
    //(Returns 0 if there is no available process).
@@ -44,5 +47,25 @@ class FastRoundRobin : public RoundRobin
 
 };
 
+class CompletelyFair : public Scheduler
+{
+ protected:
+  BSTMultimap<int, Process*>* procTree;
+
+ public:
+  CompletelyFair();
+  virtual ~CompletelyFair();
+
+  virtual void addProcess(Process* proc);
+  virtual Process* popNext(int curCycle);
+
+};
+
+class FastCompletelyFair : public CompletelyFair
+{
+ public:
+  FastCompletelyFair();
+
+};
 
 #endif

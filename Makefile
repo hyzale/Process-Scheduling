@@ -2,8 +2,6 @@ default: all
 
 all: 
 
-
-
 ArrayList_TEST: ArrayList_TEST.cpp ArrayList.hpp catch.hpp ArrayList.tpp
 	g++ -std=c++11 -o ArrayList_TEST ArrayList_TEST.cpp 
 	./ArrayList_TEST
@@ -63,6 +61,36 @@ testlcov_BSTMultimap_TEST: testgcov_BSTMultimap_TEST
 	./BSTMultimap_TEST
 	lcov --directory ./ --capture --output-file BSTMultimap_TEST.info
 	genhtml --output-directory coverage BSTMultimap_TEST.info
+
+RBTNode_TEST: RBTNode_TEST.cpp RBTNode.hpp RBTNode.tpp catch.hpp
+	g++ -std=c++11 -o RBTNode_TEST RBTNode_TEST.cpp
+	./RBTNode_TEST
+
+testgcov_RBTNode_TEST: 
+	g++ -std=c++11 --coverage -o RBTNode_TEST RBTNode_TEST.cpp
+	./RBTNode_TEST
+	gcov RBTNode_TEST.cpp
+
+testlcov_RBTNode_TEST: testgcov_RBTNode_TEST
+	lcov --directory ./ --zerocounters
+	./RBTNode_TEST
+	lcov --directory ./ --capture --output-file RBTNode_TEST.info
+	genhtml --output-directory coverage RBTNode_TEST.info
+
+RBTMultimap_TEST: RBTMultimap_TEST.cpp RBTMultimap.hpp RBTMultimap.tpp RBTNode.hpp RBTNode.tpp catch.hpp BSTForwardIterator.tpp  BSTForwardIterator.hpp
+	g++ -std=c++11 -o RBTMultimap_TEST RBTMultimap_TEST.cpp
+	./RBTMultimap_TEST
+
+testgcov_RBTMultimap_TEST: 
+	g++ -std=c++11 --coverage -o RBTMultimap_TEST RBTMultimap_TEST.cpp
+	./RBTMultimap_TEST
+	gcov RBTMultimap_TEST.cpp
+
+testlcov_RBTMultimap_TEST: testgcov_RBTMultimap_TEST
+	lcov --directory ./ --zerocounters
+	./RBTMultimap_TEST
+	lcov --directory ./ --capture --output-file RBTMultimap_TEST.info
+	genhtml --output-directory coverage RBTMultimap_TEST.info
 
 tests: ArrayList_TEST
 	./ArrayList_TEST

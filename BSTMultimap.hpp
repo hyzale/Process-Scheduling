@@ -16,18 +16,18 @@ class BSTMultimap
    BSTNode<key_t, val_t>* root;
    BSTNode<key_t, val_t>* sentinel;
    int numItems;
-   void insertNode(BSTNode<key_t, val_t>* newNode);
-   void transplant(BSTNode<key_t,val_t>* del, BSTNode<key_t,val_t>* child, BSTNode<key_t,val_t>* parent);
+   virtual void insertNode(BSTNode<key_t, val_t>* newNode);
+   virtual void transplant(BSTNode<key_t,val_t>* del, BSTNode<key_t,val_t>* child, BSTNode<key_t,val_t>* parent);
 
   public:
    BSTMultimap();
    virtual ~BSTMultimap();
 
-   void clear(BSTNode<key_t, val_t>* node);
+   virtual void clear(BSTNode<key_t, val_t>* node);
    virtual void insert(const key_t& key, const val_t& val);
    virtual int getSize() const;
    virtual bool isEmpty() const;
-   virtual string toString() const;
+   // virtual string toString() const;
    virtual bool contains(const key_t& key) const;
    virtual void clear();
 

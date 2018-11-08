@@ -11,7 +11,6 @@ template <class key_t, class val_t>
 void BSTMultimap<key_t, val_t>::insert(const key_t& key, const val_t& val) {
     BSTNode<key_t, val_t>* newNode = new BSTNode<key_t, val_t>(key, val);
     insertNode(newNode);
-    numItems++;
 }
 
 template <class key_t, class val_t>
@@ -35,6 +34,9 @@ void BSTMultimap<key_t, val_t>::insertNode(BSTNode<key_t, val_t>* newNode) {
     } else {
       newParent->setRightChild(newNode);
     }
+    newNode->setRightChild(sentinel);
+    newNode->setLeftChild(sentinel);
+    numItems ++;
 }
 
 template <class key_t, class val_t>
@@ -46,14 +48,6 @@ template <class key_t, class val_t>
 bool BSTMultimap<key_t, val_t>::isEmpty() const {
     return numItems == 0;
 
-}
-
-template <class key_t, class val_t>
-string BSTMultimap<key_t, val_t>::toString() const {
-    if (root != sentinel) {
-        return root->inOrder();
-    }
-    return "";
 }
 
 template <class key_t, class val_t>
@@ -174,9 +168,6 @@ BSTForwardIterator<key_t, val_t> BSTMultimap<key_t, val_t>::remove(const BSTForw
     numItems--;
     return successor; 
 }
-
-
-
 
 template <class key_t, class val_t>
 void BSTMultimap<key_t, val_t>::transplant(BSTNode<key_t,val_t>* delNode, BSTNode<key_t,val_t>* childNode, BSTNode<key_t,val_t>* parentNode){
